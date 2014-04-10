@@ -17,9 +17,24 @@ public class JeuDeGomoku {
      * Tableau de joueurs pour la partie
      */
     private Joueur[] joueurs;
+    /**
+     * plateau de gomoku
+     */
     private PlateauGomoku plateau;
+    
+    /**
+     * joueurCourant en cour
+     */
     private int joueurCourant;
+    
+    /**
+     * taille du plateau
+     */
     private int taillePlateau;
+    
+    /**
+     * nombre de coup a aligner pour gagner
+     */
     private int taillePourGagner;
 
     /**
@@ -62,11 +77,10 @@ public class JeuDeGomoku {
 
     /**
      * Permet d'obtenir le joueur suivant
-     *
-     * @return le joueur suivant
+     * le joueur suivant
      */
-    private int joueurSuivant() {
-        return joueurCourant = (joueurCourant == 0) ? 1 : 0;
+    private void joueurSuivant() {
+        joueurCourant = 1-joueurCourant;
     }
 
     /**
@@ -78,18 +92,28 @@ public class JeuDeGomoku {
                 && plateau.checkLigneId(plateau.getDernierCoup().pos, joueurCourant, taillePourGagner);
     }
 
+    /**
+     * Verifie si le coup est valide
+     * @param c Coup à vérifier
+     * @return 0 si coup non valide 1 si coup valide
+     */
     public boolean coupValide(Coup c) {
         return plateau.isEmpty(c.pos.x, c.pos.y);
     }
 
+    /**
+     * Permet de jouer la partie 
+     * @return le joueur gagnant 
+     */
     public Joueur jouerPartie() {
         while (!this.partieTerminee()) {
-            joueurCourant = this.joueurSuivant();
+            this.joueurSuivant();
             Coup c = joueurs[joueurCourant].genererCoup(plateau);
             if (coupValide(c)) {
                 plateau.jouer(c);
             } else {
-                // gestion en cas de coup non valide
+               // On change de joueur pour pouvoir rejouer
+               this.joueurSuivant();
             }
         }
         return joueurs[joueurCourant];
