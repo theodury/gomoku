@@ -15,7 +15,7 @@ public class PlateauGomoku extends Plateau {
         super(longueur, largeur);
     }
 
-    public boolean verifierLineId(Position pos, int id, int n) {
+    public boolean checkLineId(Position pos, int id, int n) {
         boolean value = true;
         for (int i = pos.x - n; i < pos.x + n; i++) {
             if (id != this.etatPlateau[i][pos.y]) {
@@ -25,7 +25,7 @@ public class PlateauGomoku extends Plateau {
         return value;
     }
 
-    public boolean verifierColoneId(Position pos, int id, int n) {
+    public boolean checkColonneId(Position pos, int id, int n) {
         boolean value = true;
         for (int j = pos.y - n; j < pos.y + n; j++) {
             if (id != this.etatPlateau[pos.x][j]) {
