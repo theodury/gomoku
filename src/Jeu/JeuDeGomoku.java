@@ -3,6 +3,8 @@ package Jeu;
 import Joueur.Joueur;
 import Plateau.Coup;
 import Plateau.Plateau;
+import Plateau.PlateauGomoku;
+import java.util.ArrayList;
 
 /**
  * Permet de génerer une partie de Gomoku en fonction du type de la partie
@@ -15,7 +17,7 @@ public class JeuDeGomoku {
      * Tableau de joueurs pour la partie
      */
     private Joueur[] joueurs;
-    private Plateau plateau;
+    private PlateauGomoku plateau;
     private int joueurCourant;
     private int taillePlateau;
     private int taillePourGagner;
@@ -38,8 +40,6 @@ public class JeuDeGomoku {
      * @param ordre position du joueur
      * @param joueur Joueur
      */
-    
-    
     public void setJoueur(int ordre, Joueur joueur) {
         this.joueurs[ordre] = joueur;
     }
@@ -49,7 +49,7 @@ public class JeuDeGomoku {
      *
      * @param plateau Plateau
      */
-    public void setPlateau(Plateau plateau) {
+    public void setPlateau(PlateauGomoku plateau) {
         this.plateau = plateau;
     }
 
@@ -74,11 +74,8 @@ public class JeuDeGomoku {
      * @return 1 pour partie terminee, 0 pour partie en cour
      */
     public boolean partieTerminee() {
-        int compteur = 0;
-        plateau.getHistorique(
-                plateau.getHistorique.size()-1
-                        );
-        
+        return plateau.checkColonneId(plateau.getDernierCoup().pos, joueurCourant, taillePourGagner)
+                && plateau.checkLigneId(plateau.getDernierCoup().pos, joueurCourant, taillePourGagner);
     }
 
     public boolean coupValide(Coup c) {
@@ -98,5 +95,3 @@ public class JeuDeGomoku {
         return joueurs[joueurCourant];
     }
 }
-
-

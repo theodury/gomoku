@@ -57,8 +57,8 @@ public class Plateau{
      * Retourne l'historique des coups du plateau
      * @return list des coups sur le plateau
      */
-    public ArrayList<Coup> getHistorique() {
-        return historique;
+    public Coup getDernierCoup() {
+        return historique.get(historique.size()-1);
     }
     
     
