@@ -22,7 +22,7 @@ public class PlateauGomoku extends Plateau {
      * @param n Nombre de cases
      * @return Vrai si gagné, faux sinon
      */
-    public boolean checkLineId(Position pos, int id, int n) {
+    public boolean checkLigneId(Position pos, int id, int n) {
         boolean value = true;
         for (int i = pos.x - n; i < pos.x + n; i++) {
             if (id != this.etatPlateau[i][pos.y]) {
