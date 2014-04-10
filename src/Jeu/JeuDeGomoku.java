@@ -25,23 +25,11 @@ public class JeuDeGomoku {
      *
      * @param type type de la partie ( HumainVsAleatoire, ...)
      */
-    public JeuDeGomoku(TypePartie type) {
-
+    public JeuDeGomoku() {
         joueurCourant = 0;
         joueurs = new Joueur[2];
         taillePlateau = 10;
         setTaillePourGagner();
-
-        switch (type) {
-            case HumainVsHumain:
-                break;
-            case HumainVsAleatoire:
-                break;
-            case AleatoireVsAleatoire:
-                break;
-            default:
-                throw new AssertionError(type.name());
-        }
     }
 
     /**
