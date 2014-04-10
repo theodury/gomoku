@@ -14,10 +14,10 @@ public class Plateau{
     int[][] etatPlateau;
     ArrayList<Coup> historique;
 
-    public Plateau(int longueur, int largeur) {
+    public Plateau(int longueur, int hauteur) {
         this.longueur = longueur;
-        this.hauteur = largeur;
-        this.etatPlateau = new int[longueur][largeur];
+        this.hauteur = hauteur;
+        this.etatPlateau = new int[longueur][hauteur];
         this.historique = new ArrayList<>();
         this.initialiser();
     }
@@ -26,8 +26,12 @@ public class Plateau{
         return longueur;
     }
 
-    public int getLargeur() {
+    public int getHauteur() {
         return hauteur;
+    }
+    
+    public boolean isEmpty(int x, int y) {
+        return this.etatPlateau[x][y] == 0;
     }
 
     public final void initialiser() {
@@ -51,9 +55,15 @@ public class Plateau{
         return coupPrecedent;
     }
 
-    public void jouer(Coup coup) {
-        this.etatPlateau[coup.pos.x][coup.pos.y] = coup.id;
-        this.historique.add(coup);
+    public boolean jouer(Coup coup) {
+        if (this.isEmpty(coup.pos.x, coup.pos.y)) {
+            this.etatPlateau[coup.pos.x][coup.pos.y] = coup.id;
+            this.historique.add(coup);
+            
+            return true;
+        }
+        
+        return false;
     }
 
     public ArrayList<Position> etatId(int id) {
