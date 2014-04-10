@@ -52,6 +52,16 @@ public class Plateau{
     public int getHauteur() {
         return hauteur;
     }
+
+    /**
+     * Retourne l'historique des coups du plateau
+     * @return list des coups sur le plateau
+     */
+    public ArrayList<Coup> getHistorique() {
+        return historique;
+    }
+    
+    
     
     /**
      * Teste si une case du plateau est vide
