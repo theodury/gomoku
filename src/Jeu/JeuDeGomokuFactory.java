@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package Jeu;
 
@@ -18,9 +13,24 @@ import java.util.ArrayList;
  */
 public class JeuDeGomokuFactory implements JeuDePlateauFactory{
     
+    /**
+     * Hauteur par défaut du plateau
+     */
     static final int HAUTEUR = 9;
+    
+    /**
+     * Longueur par défaut du plateau
+     */
     static final int LONGUEUR = 9;
+    
+    /**
+     * Identifiant du 1er joueur
+     */
     static final int JOUEUR1 = 1;
+    
+    /**
+     * Identifiant du 2eme joueur
+     */
     static final int JOUEUR2 = 2;
 
     @Override
