@@ -48,4 +48,12 @@ public class PlateauGomoku extends Plateau {
         }
         return value;
     }
+
+    /**
+     * Retourne le nombre de coups à aligner pour gagner
+     * @return Nombre de coups à aligner pour la victoire
+     */
+    public int getNombreVictoire() {
+        return this.longueur / 2;
+    }
 }
