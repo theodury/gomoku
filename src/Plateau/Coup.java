@@ -15,7 +15,7 @@ public class Coup {
     /**
      * Position à laquelle le coup est joué
      */
-    Position pos;
+    public Position pos;
 
     public Coup(int id, Position pos) {
         this.id=id;

@@ -7,8 +7,8 @@ package Plateau;
  */
 public class Position {
     
-    int x;
-    int y;
+    public int x;
+    public int y;
 
     /**
      * Construteur de position
@@ -19,6 +19,8 @@ public class Position {
         this.x = x;
         this.y = y;
     }
+    
+ 
     
     /**
      * Affiche la position de x et y
