@@ -15,6 +15,13 @@ public class PlateauGomoku extends Plateau {
         super(longueur, largeur);
     }
 
+    /**
+     * Vérifie une ligne en fonction d'un joueur
+     * @param pos Position à tester
+     * @param id Id du joueur
+     * @param n Nombre de cases
+     * @return Vrai si gagné, faux sinon
+     */
     public boolean checkLineId(Position pos, int id, int n) {
         boolean value = true;
         for (int i = pos.x - n; i < pos.x + n; i++) {
@@ -25,6 +32,13 @@ public class PlateauGomoku extends Plateau {
         return value;
     }
 
+    /**
+     * Vérifie une colonne en fonction d'un joueur
+     * @param pos Position à tester
+     * @param id Id du joueur
+     * @param n Nombre de cases
+     * @return Vrai si gagné, faux sinon
+     */
     public boolean checkColonneId(Position pos, int id, int n) {
         boolean value = true;
         for (int j = pos.y - n; j < pos.y + n; j++) {

@@ -9,9 +9,24 @@ import java.util.ArrayList;
  */
 public class Plateau{
 
+    /**
+     * Longueur du plateau de jeu
+     */
     int longueur;
+    
+    /**
+     * Hauteur du plateau de jeu
+     */
     int hauteur;
+    
+    /**
+     * Valeurs internes du plateau de jeu
+     */
     int[][] etatPlateau;
+    
+    /**
+     * Historique des coups joués sur le plateau
+     */
     ArrayList<Coup> historique;
 
     public Plateau(int longueur, int hauteur) {
@@ -22,18 +37,35 @@ public class Plateau{
         this.initialiser();
     }
 
+    /**
+     * Retourne la longueur du plateau
+     * @return Longueur du plateau
+     */
     public int getLongueur() {
         return longueur;
     }
 
+    /**
+     * Retourne la hauteur du plateau
+     * @return Hauteur du plateau
+     */
     public int getHauteur() {
         return hauteur;
     }
     
+    /**
+     * Teste si une case du plateau est vide
+     * @param x Position en x 
+     * @param y Position en y
+     * @return Vrai si la case est vide, sinon faux
+     */
     public boolean isEmpty(int x, int y) {
         return this.etatPlateau[x][y] == 0;
     }
 
+    /**
+     * Permet d'initialiser le plateau
+     */
     public final void initialiser() {
         for (int i = 0; i < this.longueur; i++) {
             for (int j = 0; j < this.hauteur; j++) {
@@ -41,13 +73,21 @@ public class Plateau{
             }
         }
     }
-
-    public void initialiser(ArrayList<Coup> coup) {
-        for (int i = 0; i < coup.size(); i++) {
-            this.jouer(coup.get(i));
+    
+    /**
+     * Permet d'initialiser le plateau avec des coups déjà existants
+     * @param coups Coups précédents 
+     */
+    public void initialiser(ArrayList<Coup> coups) {
+        for (int i = 0; i < coups.size(); i++) {
+            this.jouer(coups.get(i));
         }
     }
 
+    /**
+     * Annule le coup précédent
+     * @return Le coup annulé
+     */
     public Coup annuler() {
         Coup coupPrecedent = this.historique.get(this.historique.size() - 1);
         this.etatPlateau[coupPrecedent.pos.x][coupPrecedent.pos.y] = 0;
@@ -55,6 +95,11 @@ public class Plateau{
         return coupPrecedent;
     }
 
+    /**
+     * Joue un coup
+     * @param coup Le coup à jouer
+     * @return Vrai si coup bien joué, faux sinon
+     */
     public boolean jouer(Coup coup) {
         if (this.isEmpty(coup.pos.x, coup.pos.y)) {
             this.etatPlateau[coup.pos.x][coup.pos.y] = coup.id;
@@ -66,6 +111,11 @@ public class Plateau{
         return false;
     }
 
+    /**
+     * Retourne les positions joués par un joueur
+     * @param id L'id du joueur
+     * @return Liste des position du joueur
+     */
     public ArrayList<Position> etatId(int id) {
         ArrayList<Position> ListPos = new ArrayList<>();
         for (int i = 0; i < this.longueur; i++) {

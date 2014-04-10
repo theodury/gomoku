@@ -10,12 +10,19 @@ import Plateau.Plateau;
  */
 public abstract class Joueur {
     
+    /**
+     * Représente l'id du joueur
+     */
     protected int id;
 
     public Joueur(int id) {
         this.id = id;
     }
 
+    /**
+     * Retourne l'id du joueur
+     * @return id du joueur
+     */
     public int getId() {
         return id;
     }

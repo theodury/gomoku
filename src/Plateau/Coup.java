@@ -7,7 +7,14 @@ package Plateau;
  */
 public class Coup {
     
+    /**
+     * L'id du joueur qui a placé le coup
+     */
     int id;
+    
+    /**
+     * Position à laquelle le coup est joué
+     */
     Position pos;
 
     public Coup(int id, Position pos) {
