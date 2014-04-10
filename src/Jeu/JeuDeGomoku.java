@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class JeuDeGomoku extends JeuDePlateau {
     
     /**
-     * Nombre de coupà a aligner pour gagner
+     * Nombre de coups a aligner pour gagner
      */
     private int taillePourGagner;
 
@@ -29,8 +29,8 @@ public class JeuDeGomoku extends JeuDePlateau {
     @Override
     public boolean partieTerminee() {
         PlateauGomoku plateauGomoku = (PlateauGomoku)plateau;
-        return plateauGomoku.checkColonneId(plateau.getDernierCoup().pos, joueurCourant, plateauGomoku.getNombreVictoire())
-                && plateauGomoku.checkLigneId(plateau.getDernierCoup().pos, joueurCourant, plateauGomoku.getNombreVictoire());
+        return plateauGomoku.checkColonneId(plateau.getDernierCoup().pos, plateau.getDernierCoup().getId(), plateauGomoku.getNombreVictoire())
+                && plateauGomoku.checkLigneId(plateau.getDernierCoup().pos, plateau.getDernierCoup().getId(), plateauGomoku.getNombreVictoire());
     }
 
     @Override

@@ -22,6 +22,10 @@ public class Coup {
         this.pos=pos;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return "Coup{" + "id=" + id + '}';

@@ -54,11 +54,15 @@ public class Plateau{
     }
 
     /**
-     * Retourne l'historique des coups du plateau
-     * @return list des coups sur le plateau
+     * Retourne le dernier coup joué
+     * @return Dernier coup joué ou Coup(0) si aucun coup joué
      */
     public Coup getDernierCoup() {
-        return historique.get(historique.size()-1);
+        if (historique.size() > 0) {
+            return historique.get(historique.size()-1);
+        }
+        
+        return new Coup(0, new Position(0, 0));
     }
     
     

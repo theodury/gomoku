@@ -55,6 +55,10 @@ public abstract class JeuDePlateau {
      */
     public void setPlateau(PlateauGomoku plateau) {
         this.plateau = plateau;
+        // Initialise le premier joueur si plateau avec situation initiale
+        if (plateau.getDernierCoup().getId() != 0) {
+            this.joueurCourant = plateau.getDernierCoup().getId() - 1;
+        }
     }
 
     /**
@@ -70,7 +74,6 @@ public abstract class JeuDePlateau {
      */
     public Joueur jouerPartie() {
         while (!this.partieTerminee()) {
-            this.joueurSuivant();
             Coup c = joueurs[joueurCourant].genererCoup(plateau);
             if (coupValide(c)) {
                 plateau.jouer(c);
@@ -78,6 +81,8 @@ public abstract class JeuDePlateau {
                 // On change de joueur pour pouvoir rejouer
                 this.joueurSuivant();
             }
+            // On change de joueur
+            this.joueurSuivant();
         }
 
         return joueurs[joueurCourant];
