@@ -1,21 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package Etape1;
 
 /**
- *
- * @author TD
+ * Coup
+ * @author Théo Dury
  */
 public class Coup {
     
     int id;
     Position pos;
 
-    public Coup(int id) {
+    public Coup(int id, Position pos) {
         this.id=id;
         this.pos=pos;
     }

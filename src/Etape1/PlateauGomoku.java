@@ -1,21 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Etape1;
 
 /**
- *
- * @author TD
+ * Plateau Gomoku
+ * @author Théo Dury
  */
-public class PlateauGomoKu extends Plateau {
+public class PlateauGomoku extends Plateau {
 
-    public PlateauGomoKu() {
+    public PlateauGomoku() {
         super(9, 9);
     }
 
-    public PlateauGomoKu(int longueur, int largeur) {
+    public PlateauGomoku(int longueur, int largeur) {
         super(longueur, largeur);
     }
 

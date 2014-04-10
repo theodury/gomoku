@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package Etape1;
 
 /**
- *
- * @author TD
+ * Simulateur de jeu
+ * @author Théo Dury
  */
 public class SimulateurDeJeu {
     
@@ -18,7 +13,7 @@ public class SimulateurDeJeu {
     
     public static void main(String[] args) {
 
-        PlateauGomoKu plateau = new PlateauGomoKu();
+        PlateauGomoku plateau = new PlateauGomoku();
         System.out.println(plateau.toString());
         
     }
