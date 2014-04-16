@@ -32,8 +32,10 @@ public class Noeud {
         
         public Coup getCoup(){
             Noeud meilleurCoup = null;
-            ArrayList<Position> positionPossible =  etatJeu.getEtat
-            return Coup;
+            //ArrayList<Position> positionPossible =  etatJeu.getEtat
+            //return Coup;
+            
+            return null;
         }
 
         
