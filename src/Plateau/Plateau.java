@@ -2,12 +2,13 @@
 package Plateau;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 /**
- *
+ * Plateau de jeu
  * @author Theo Dury
  */
-public class Plateau{
+public class Plateau extends Observable {
 
     /**
      * Longueur du plateau de jeu
@@ -65,7 +66,15 @@ public class Plateau{
         return new Coup(0, new Position(0, 0));
     }
     
-    
+    /**
+     * Retourne l'id du joueur pour une certaine position
+     * @param x Position en x
+     * @param y Position en y
+     * @return L'id du joueur
+     */
+    public int getId(int x, int y) {
+        return this.etatPlateau[x][y];
+    }
     
     /**
      * Teste si une case du plateau est vide
@@ -93,6 +102,10 @@ public class Plateau{
      * @param coups Coups précédents 
      */
     public void initialiser(ArrayList<Coup> coups) {
+        if (coups == null) {
+            return;
+        }
+        
         for (int i = 0; i < coups.size(); i++) {
             this.jouer(coups.get(i));
         }

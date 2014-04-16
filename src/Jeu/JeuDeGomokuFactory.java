@@ -37,9 +37,9 @@ public class JeuDeGomokuFactory implements JeuDePlateauFactory{
     public JeuDePlateau CreerPartieHumainVSHumain(ArrayList<Coup> situation) {
         JeuDeGomoku jeu = new JeuDeGomoku();
         // Joueur 1
-        jeu.setJoueur(1, new JoueurHumain(JOUEUR1));
+        jeu.setJoueur(0, new JoueurHumain(JOUEUR1));
         // Joueur 2
-        jeu.setJoueur(2, new JoueurHumain(JOUEUR2));
+        jeu.setJoueur(1, new JoueurHumain(JOUEUR2));
         // Plateau
         PlateauGomoku plateau = new PlateauGomoku(LONGUEUR, HAUTEUR);
         plateau.initialiser(situation);

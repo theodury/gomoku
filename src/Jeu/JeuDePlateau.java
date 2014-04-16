@@ -4,13 +4,14 @@ import Joueur.Joueur;
 import Plateau.Coup;
 import Plateau.Plateau;
 import Plateau.PlateauGomoku;
+import java.util.Observable;
 
 /**
  * Jeu de plateau générique
  *
  * @author Mario
  */
-public abstract class JeuDePlateau {
+public abstract class JeuDePlateau extends Observable {
 
     /**
      * Liste des joueurs
@@ -62,10 +63,26 @@ public abstract class JeuDePlateau {
     }
 
     /**
+     * Retourne le plateau de jeu
+     * @return Plateau de jeu
+     */
+    public Plateau getPlateau() {
+        return plateau;
+    }
+
+    /**
      * Permet d'obtenir le joueur suivant le joueur suivant
      */
     protected void joueurSuivant() {
         joueurCourant = 1 - joueurCourant;
+    }
+    
+    /**
+     * Retourne le Joueur courant
+     * @return Joueur courant
+     */
+    public Joueur getJoueurCourant() {
+        return this.joueurs[this.joueurCourant];
     }
 
     /**
