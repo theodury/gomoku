@@ -1,8 +1,8 @@
-
 package Plateau;
 
 /**
  * Plateau Gomoku
+ *
  * @author Théo Dury
  */
 public class PlateauGomoku extends Plateau {
@@ -17,40 +17,67 @@ public class PlateauGomoku extends Plateau {
 
     /**
      * Vérifie une ligne en fonction d'un joueur
-     * @param pos Position à tester
-     * @param id Id du joueur
+     *
+     * @param coup Coup joué
      * @param n Nombre de cases
      * @return Vrai si gagné, faux sinon
      */
-    public boolean checkLigneId(Position pos, int id, int n) {
-        boolean value = true;
-        for (int i = pos.x - n; i < pos.x + n; i++) {
-            if (id != this.etatPlateau[i][pos.y]) {
-                return false;
+    public boolean checkLigneId(Coup coup, int n) {
+        if (coup != null) {
+            int x = coup.pos.x;
+            int y = coup.pos.y;
+            int _x = x;
+            int id = coup.id;
+            int i = 0;
+            int x_end = x + n;
+            while (x <= longueur && y < x_end && etatPlateau[x - 1][y - 1] == id) {
+                i = i + 1;
+                x++;
             }
+            x_end = _x - n;
+            i = i - 1;
+            while (_x > 0 && _x > x_end && etatPlateau[_x - 1][y - 1] == id) {
+                i = i + 1;
+                _x--;
+            }
+            return i >= n;
         }
-        return value;
+        return false;
     }
 
     /**
      * Vérifie une colonne en fonction d'un joueur
-     * @param pos Position à tester
-     * @param id Id du joueur
+     *
+     * @param coup Coup joué
      * @param n Nombre de cases
      * @return Vrai si gagné, faux sinon
      */
-    public boolean checkColonneId(Position pos, int id, int n) {
-        boolean value = true;
-        for (int j = pos.y - n; j < pos.y + n; j++) {
-            if (id != this.etatPlateau[pos.x][j]) {
-                return false;
+    public boolean checkColonneId(Coup coup, int n) {
+        if (coup != null) {
+            int x = coup.pos.x;
+            int y = coup.pos.y;
+            int _y = y;
+            int id = coup.id;
+            int i = 0;
+            int y_end = y + n;
+            while (y <= hauteur && y < y_end && etatPlateau[x - 1][y - 1] == id) {
+                i = i + 1;
+                y++;
             }
+            y_end = _y - n;
+            i = i - 1;
+            while (_y > 0 && _y > y_end && etatPlateau[x - 1][_y - 1] == id) {
+                i = i + 1;
+                _y--;
+            }
+            return i >= n;
         }
-        return value;
+        return false;
     }
 
     /**
      * Retourne le nombre de coups à aligner pour gagner
+     *
      * @return Nombre de coups à aligner pour la victoire
      */
     public int getNombreVictoire() {

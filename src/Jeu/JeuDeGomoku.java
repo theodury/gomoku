@@ -29,8 +29,8 @@ public class JeuDeGomoku extends JeuDePlateau {
     @Override
     public boolean partieTerminee() {
         PlateauGomoku plateauGomoku = (PlateauGomoku)plateau;
-        return plateauGomoku.checkColonneId(plateau.getDernierCoup().pos, plateau.getDernierCoup().getId(), plateauGomoku.getNombreVictoire())
-                && plateauGomoku.checkLigneId(plateau.getDernierCoup().pos, plateau.getDernierCoup().getId(), plateauGomoku.getNombreVictoire());
+        return plateauGomoku.checkColonneId(plateau.getDernierCoup(), plateauGomoku.getNombreVictoire())
+                && plateauGomoku.checkLigneId(plateau.getDernierCoup(), plateauGomoku.getNombreVictoire());
     }
 
     @Override

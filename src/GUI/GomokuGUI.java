@@ -3,11 +3,13 @@ package GUI;
 import Jeu.JeuDeGomoku;
 import Plateau.Coup;
 import Plateau.PlateauGomoku;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -32,15 +34,18 @@ public class GomokuGUI implements Observer {
 
         addComponents();
 
-        frame.setLayout(new FlowLayout());
+        frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
         frame.setLocation(0, 0);
         frame.setVisible(true);
         frame.setSize(370, 370);
+        
+        //jeu.jouerPartie();
     }
 
     private void addComponents() {
         panel = new GomokuPanel((PlateauGomoku) jeu.getPlateau());
+        panel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.addMouseListener(new MouseListener() {
             public void mouseClicked(MouseEvent e) {
                 Coup coup = panel.getCoup(jeu.getJoueurCourant().getId(), e.getX(), e.getY());
@@ -60,7 +65,8 @@ public class GomokuGUI implements Observer {
             }
         });
 
-        message = new JLabel();
+        message = new JLabel("Bonjour et bienvenue!");
+        message.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         frame.add(panel);
         frame.getContentPane().add(message);

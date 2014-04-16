@@ -2,7 +2,6 @@
 package Plateau;
 
 import GUI.GomokuGUI;
-import GUI.GomokuPanel;
 import Jeu.JeuDeGomoku;
 import Jeu.JeuDeGomokuFactory;
 
