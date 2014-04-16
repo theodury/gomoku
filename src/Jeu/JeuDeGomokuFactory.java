@@ -42,7 +42,9 @@ public class JeuDeGomokuFactory implements JeuDePlateauFactory{
         jeu.setJoueur(1, new JoueurHumain(JOUEUR2));
         // Plateau
         PlateauGomoku plateau = new PlateauGomoku(LONGUEUR, HAUTEUR);
-        plateau.initialiser(situation);
+        if (situation != null) {
+            plateau.initialiser(situation);
+        }
         jeu.setPlateau(plateau);
         
         return jeu;
@@ -57,7 +59,9 @@ public class JeuDeGomokuFactory implements JeuDePlateauFactory{
         jeu.setJoueur(2, new JoueurAleatoire(JOUEUR2));
         // Plateau
         PlateauGomoku plateau = new PlateauGomoku(LONGUEUR, HAUTEUR);
-        plateau.initialiser(situation);
+        if (situation != null) {
+            plateau.initialiser(situation);
+        }
         jeu.setPlateau(plateau);
         
         return jeu;
@@ -72,10 +76,27 @@ public class JeuDeGomokuFactory implements JeuDePlateauFactory{
         jeu.setJoueur(2, new JoueurAleatoire(JOUEUR2));
         // Plateau
         PlateauGomoku plateau = new PlateauGomoku(LONGUEUR, HAUTEUR);
-        plateau.initialiser(situation);
+        if (situation != null) {
+            plateau.initialiser(situation);
+        }
         jeu.setPlateau(plateau);
         
         return jeu;
+    }
+
+    @Override
+    public JeuDePlateau CreerPartieHumainVSHumain() {
+        return CreerPartieHumainVSHumain(null);
+    }
+
+    @Override
+    public JeuDePlateau CreerPartieHumainVSAleatoire() {
+        return CreerPartieHumainVSAleatoire(null);
+    }
+
+    @Override
+    public JeuDePlateau CreerPartieAleatoireVSAleatoire() {
+        return CreerPartieAleatoireVSAleatoire();
     }
     
     
