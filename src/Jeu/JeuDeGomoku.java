@@ -30,10 +30,9 @@ public class JeuDeGomoku extends JeuDePlateau {
         if (c.getId() == 0) {
             return false;
         }
-
         PlateauGomoku plateauGomoku = (PlateauGomoku) plateau;
         return plateauGomoku.checkColonneId(c, plateauGomoku.getNombreVictoire())
-                && plateauGomoku.checkLigneId(c, plateauGomoku.getNombreVictoire());
+                || plateauGomoku.checkLigneId(c, plateauGomoku.getNombreVictoire());
     }
 
     @Override

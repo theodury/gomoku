@@ -24,8 +24,9 @@ public class GomokuGUI implements Observer {
     private GomokuPanel panel;
     private JeuDeGomoku jeu;
     private JLabel message;
-    
+
     static private boolean humainJoue;
+    private MouseListener mouseListener;
 
     public GomokuGUI(JeuDeGomoku jeu) {
         this.jeu = jeu;
@@ -41,7 +42,7 @@ public class GomokuGUI implements Observer {
         frame.setLocation(0, 0);
         frame.setVisible(true);
         frame.setSize(370, 370);
-        
+
         jeu.joueurSuivant();
         this.update(null, jeu);
     }
@@ -49,7 +50,7 @@ public class GomokuGUI implements Observer {
     private void addComponents() {
         panel = new GomokuPanel((PlateauGomoku) jeu.getPlateau());
         panel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panel.addMouseListener(new MouseListener() {
+        this.mouseListener = new MouseListener() {
             public void mouseClicked(MouseEvent e) {
                 if (humainJoue) {
                     Coup coup = panel.getCoup(jeu.getJoueurCourant().getId(), e.getX(), e.getY());
@@ -68,8 +69,9 @@ public class GomokuGUI implements Observer {
 
             public void mousePressed(MouseEvent e) {
             }
-        });
+        };
 
+        panel.addMouseListener(mouseListener);
         message = new JLabel("Bienvenue sur un super Gomoku!");
         message.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -81,22 +83,24 @@ public class GomokuGUI implements Observer {
     public void update(Observable o, Object arg) {
         // On vérifie si la partie est terminée
         if (jeu.partieTerminee()) {
-            message.setText("Joueur " + jeu.getJoueurCourant().getId() + "gagne!");
-        }
-        
-        // Passer au joueur suivant
-        jeu.joueurSuivant();
-        message.setText("Tour du joueur " + jeu.getJoueurCourant().getId());
-        
-        humainJoue = (jeu.getJoueurCourant() instanceof JoueurHumain);
-        if (!humainJoue) {
-            // Trouver le coup de l'ordinateur
-            Coup c = jeu.getJoueurCourant().genererCoup(jeu.getPlateau());
-            if (jeu.coupValide(c)) {
-                jeu.getPlateau().jouer(c);
-            } else {
-                // On change de joueur pour pouvoir rejouer
-                jeu.joueurSuivant();
+            message.setText("Joueur " + jeu.getJoueurCourant().getId() + " gagne!");
+            jeu.getPlateau().deleteObserver(this);
+            this.panel.removeMouseListener(mouseListener);
+        } else {
+            // Passer au joueur suivant
+            jeu.joueurSuivant();
+            message.setText("Tour du joueur " + jeu.getJoueurCourant().getId());
+
+            humainJoue = (jeu.getJoueurCourant() instanceof JoueurHumain);
+            if (!humainJoue) {
+                // Trouver le coup de l'ordinateur
+                Coup c = jeu.getJoueurCourant().genererCoup(jeu.getPlateau());
+                if (jeu.coupValide(c)) {
+                    jeu.getPlateau().jouer(c);
+                } else {
+                    // On change de joueur pour pouvoir rejouer
+                    jeu.joueurSuivant();
+                }
             }
         }
     }
