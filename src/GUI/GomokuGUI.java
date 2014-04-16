@@ -30,7 +30,7 @@ public class GomokuGUI implements Observer {
         this.jeu.addObserver(this);
 
         frame = new JFrame("Gomoku");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         addComponents();
 
