@@ -102,22 +102,34 @@ public class MenuGUI extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
         JeuDeGomokuFactory factory = new JeuDeGomokuFactory();
-        JeuDeGomoku jeu = (JeuDeGomoku) factory.CreerPartieHumainVSHumain();
-
-        GomokuGUI gui = new GomokuGUI(jeu);
+        final JeuDeGomoku jeu = (JeuDeGomoku) factory.CreerPartieHumainVSHumain();
+        
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                GomokuGUI gui = new GomokuGUI(jeu);
+            }
+        });
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         JeuDeGomokuFactory factory = new JeuDeGomokuFactory();
-        JeuDeGomoku jeu = (JeuDeGomoku) factory.CreerPartieHumainVSAleatoire();
-        GomokuGUI gui = new GomokuGUI(jeu);
+        final JeuDeGomoku jeu = (JeuDeGomoku) factory.CreerPartieHumainVSAleatoire();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                GomokuGUI gui = new GomokuGUI(jeu);
+            }
+        });
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JeuDeGomokuFactory factory = new JeuDeGomokuFactory();
-        JeuDeGomoku jeu = (JeuDeGomoku) factory.CreerPartieAleatoireVSAleatoire();
-        GomokuGUI gui = new GomokuGUI(jeu);
+        final JeuDeGomoku jeu = (JeuDeGomoku) factory.CreerPartieAleatoireVSAleatoire();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                GomokuGUI gui = new GomokuGUI(jeu);
+            }
+        });
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

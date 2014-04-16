@@ -42,7 +42,8 @@ public class GomokuGUI implements Observer {
         frame.setVisible(true);
         frame.setSize(370, 370);
         
-        humainJoue = (jeu.getJoueurCourant() instanceof JoueurHumain);
+        jeu.joueurSuivant();
+        this.update(null, jeu);
     }
 
     private void addComponents() {
@@ -69,7 +70,7 @@ public class GomokuGUI implements Observer {
             }
         });
 
-        message = new JLabel("Bonjour et bienvenue!");
+        message = new JLabel("Bienvenue sur un super Gomoku!");
         message.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         frame.add(panel);
@@ -78,13 +79,25 @@ public class GomokuGUI implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+        // On vérifie si la partie est terminée
+        if (jeu.partieTerminee()) {
+            message.setText("Joueur " + jeu.getJoueurCourant().getId() + "gagne!");
+        }
+        
         // Passer au joueur suivant
         jeu.joueurSuivant();
+        message.setText("Tour du joueur " + jeu.getJoueurCourant().getId());
         
         humainJoue = (jeu.getJoueurCourant() instanceof JoueurHumain);
         if (!humainJoue) {
             // Trouver le coup de l'ordinateur
-            jeu.getJoueurCourant().genererCoup(jeu.getPlateau());
+            Coup c = jeu.getJoueurCourant().genererCoup(jeu.getPlateau());
+            if (jeu.coupValide(c)) {
+                jeu.getPlateau().jouer(c);
+            } else {
+                // On change de joueur pour pouvoir rejouer
+                jeu.joueurSuivant();
+            }
         }
     }
 
