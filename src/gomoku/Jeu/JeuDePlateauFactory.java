@@ -1,7 +1,7 @@
 
-package Jeu;
+package gomoku.Jeu;
 
-import Plateau.Coup;
+import gomoku.Plateau.Coup;
 import java.util.ArrayList;
 
 /**

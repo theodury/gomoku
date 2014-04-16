@@ -1,8 +1,8 @@
-package Jeu;
+package gomoku.Jeu;
 
-import Joueur.Joueur;
-import Plateau.Coup;
-import Plateau.PlateauGomoku;
+import gomoku.Joueur.Joueur;
+import gomoku.Plateau.Coup;
+import gomoku.Plateau.PlateauGomoku;
 
 /**
  * Permet de génerer une partie de Gomoku en fonction du type de la partie

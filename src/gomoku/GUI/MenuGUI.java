@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package gomoku.GUI;
 
-import Jeu.JeuDeGomoku;
-import Jeu.JeuDeGomokuFactory;
+import gomoku.Jeu.JeuDeGomoku;
+import gomoku.Jeu.JeuDeGomokuFactory;
 
 /**
  *

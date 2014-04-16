@@ -1,9 +1,9 @@
-package GUI;
+package gomoku.GUI;
 
-import Jeu.JeuDeGomoku;
-import Joueur.JoueurHumain;
-import Plateau.Coup;
-import Plateau.PlateauGomoku;
+import gomoku.Jeu.JeuDeGomoku;
+import gomoku.Joueur.JoueurHumain;
+import gomoku.Plateau.Coup;
+import gomoku.Plateau.PlateauGomoku;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;

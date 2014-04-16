@@ -1,4 +1,4 @@
-package Plateau;
+package gomoku.Plateau;
 
 /**
  * Plateau Gomoku

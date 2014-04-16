@@ -1,5 +1,5 @@
 
-package Plateau;
+package gomoku.Plateau;
 
 /**
  * Position en fonction de la hauteur et la longueur du plateau

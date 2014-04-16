@@ -1,8 +1,8 @@
 
-package IA;
+package gomoku.IA;
 
-import Plateau.Coup;
-import Plateau.Position;
+import gomoku.Plateau.Coup;
+import gomoku.Plateau.Position;
 import java.util.ArrayList;
 
 /**

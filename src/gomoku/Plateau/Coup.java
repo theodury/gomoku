@@ -1,5 +1,5 @@
 
-package Plateau;
+package gomoku.Plateau;
 
 /**
  * Coup

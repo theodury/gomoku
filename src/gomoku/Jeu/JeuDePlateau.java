@@ -1,9 +1,9 @@
-package Jeu;
+package gomoku.Jeu;
 
-import Joueur.Joueur;
-import Plateau.Coup;
-import Plateau.Plateau;
-import Plateau.PlateauGomoku;
+import gomoku.Joueur.Joueur;
+import gomoku.Plateau.Coup;
+import gomoku.Plateau.Plateau;
+import gomoku.Plateau.PlateauGomoku;
 import java.util.Observable;
 
 /**

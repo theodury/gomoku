@@ -1,8 +1,8 @@
-package GUI;
+package gomoku.GUI;
 
-import Plateau.Coup;
-import Plateau.PlateauGomoku;
-import Plateau.Position;
+import gomoku.Plateau.Coup;
+import gomoku.Plateau.PlateauGomoku;
+import gomoku.Plateau.Position;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;

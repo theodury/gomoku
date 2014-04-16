@@ -1,10 +1,10 @@
 
-package Jeu;
+package gomoku.Jeu;
 
-import Joueur.JoueurAleatoire;
-import Joueur.JoueurHumain;
-import Plateau.Coup;
-import Plateau.PlateauGomoku;
+import gomoku.Joueur.JoueurAleatoire;
+import gomoku.Joueur.JoueurHumain;
+import gomoku.Plateau.Coup;
+import gomoku.Plateau.PlateauGomoku;
 import java.util.ArrayList;
 
 /**

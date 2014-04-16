@@ -1,7 +1,7 @@
 package gomoku;
 
 
-import GUI.MenuGUI;
+import gomoku.GUI.MenuGUI;
 
 
 /**

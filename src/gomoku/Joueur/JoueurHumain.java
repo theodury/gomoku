@@ -1,9 +1,9 @@
 
-package Joueur;
+package gomoku.Joueur;
 
-import Plateau.Coup;
-import Plateau.Plateau;
-import Plateau.Position;
+import gomoku.Plateau.Coup;
+import gomoku.Plateau.Plateau;
+import gomoku.Plateau.Position;
 import java.util.Scanner;
 
 /**

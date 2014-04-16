@@ -1,8 +1,8 @@
 
-package Joueur;
+package gomoku.Joueur;
 
-import Plateau.Coup;
-import Plateau.Plateau;
+import gomoku.Plateau.Coup;
+import gomoku.Plateau.Plateau;
 
 /**
  * Joueur abstrait
