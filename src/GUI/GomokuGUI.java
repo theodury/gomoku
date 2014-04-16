@@ -40,7 +40,7 @@ public class GomokuGUI implements Observer {
         frame.setVisible(true);
         frame.setSize(370, 370);
         
-        //jeu.jouerPartie();
+        jeu.jouerPartie();
     }
 
     private void addComponents() {
