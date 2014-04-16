@@ -2,9 +2,7 @@ package Jeu;
 
 import Joueur.Joueur;
 import Plateau.Coup;
-import Plateau.Plateau;
 import Plateau.PlateauGomoku;
-import java.util.ArrayList;
 
 /**
  * Permet de génerer une partie de Gomoku en fonction du type de la partie
@@ -12,7 +10,7 @@ import java.util.ArrayList;
  * @author Mario
  */
 public class JeuDeGomoku extends JeuDePlateau {
-    
+
     /**
      * Nombre de coups a aligner pour gagner
      */
@@ -28,13 +26,35 @@ public class JeuDeGomoku extends JeuDePlateau {
 
     @Override
     public boolean partieTerminee() {
-        PlateauGomoku plateauGomoku = (PlateauGomoku)plateau;
-        return plateauGomoku.checkColonneId(plateau.getDernierCoup(), plateauGomoku.getNombreVictoire())
-                && plateauGomoku.checkLigneId(plateau.getDernierCoup(), plateauGomoku.getNombreVictoire());
+        Coup c = plateau.getDernierCoup();
+        if (c.getId() == 0) {
+            return false;
+        }
+
+        PlateauGomoku plateauGomoku = (PlateauGomoku) plateau;
+        return plateauGomoku.checkColonneId(c, plateauGomoku.getNombreVictoire())
+                && plateauGomoku.checkLigneId(c, plateauGomoku.getNombreVictoire());
     }
 
     @Override
     public boolean coupValide(Coup c) {
-        return ((PlateauGomoku)plateau).isEmpty(c.pos.x, c.pos.y);
+        return ((PlateauGomoku) plateau).isEmpty(c.pos.x, c.pos.y);
+    }
+
+    @Override
+    public Joueur jouerPartie() {
+        while (!this.partieTerminee()) {
+            Coup c = joueurs[joueurCourant].genererCoup(plateau);
+            if (coupValide(c)) {
+                plateau.jouer(c);
+            } else {
+                // On change de joueur pour pouvoir rejouer
+                this.joueurSuivant();
+            }
+            // On change de joueur
+            this.joueurSuivant();
+        }
+
+        return joueurs[joueurCourant];
     }
 }

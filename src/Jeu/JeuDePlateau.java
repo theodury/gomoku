@@ -11,7 +11,7 @@ import java.util.Observable;
  *
  * @author Mario
  */
-public abstract class JeuDePlateau extends Observable {
+public abstract class JeuDePlateau {
 
     /**
      * Liste des joueurs
@@ -73,7 +73,7 @@ public abstract class JeuDePlateau extends Observable {
     /**
      * Permet d'obtenir le joueur suivant le joueur suivant
      */
-    protected void joueurSuivant() {
+    public void joueurSuivant() {
         joueurCourant = 1 - joueurCourant;
     }
     
@@ -89,20 +89,6 @@ public abstract class JeuDePlateau extends Observable {
      * Permet de jouer la partie
      * @return le joueur gagnant
      */
-    public Joueur jouerPartie() {
-        while (!this.partieTerminee()) {
-            Coup c = joueurs[joueurCourant].genererCoup(plateau);
-            if (coupValide(c)) {
-                plateau.jouer(c);
-            } else {
-                // On change de joueur pour pouvoir rejouer
-                this.joueurSuivant();
-            }
-            // On change de joueur
-            this.joueurSuivant();
-        }
-
-        return joueurs[joueurCourant];
-    }
+    public abstract Joueur jouerPartie();
 
 }

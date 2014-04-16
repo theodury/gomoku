@@ -131,7 +131,8 @@ public class Plateau extends Observable {
         if (this.isEmpty(coup.pos.x, coup.pos.y)) {
             this.etatPlateau[coup.pos.x][coup.pos.y] = coup.id;
             this.historique.add(coup);
-            
+            setChanged();
+            notifyObservers();
             return true;
         }
         

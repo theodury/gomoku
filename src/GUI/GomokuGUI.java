@@ -1,10 +1,10 @@
 package GUI;
 
 import Jeu.JeuDeGomoku;
+import Joueur.JoueurHumain;
 import Plateau.Coup;
 import Plateau.PlateauGomoku;
 import java.awt.Component;
-import java.awt.FlowLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Observable;
@@ -24,10 +24,12 @@ public class GomokuGUI implements Observer {
     private GomokuPanel panel;
     private JeuDeGomoku jeu;
     private JLabel message;
+    
+    static private boolean humainJoue;
 
     public GomokuGUI(JeuDeGomoku jeu) {
         this.jeu = jeu;
-        this.jeu.addObserver(this);
+        this.jeu.getPlateau().addObserver(this);
 
         frame = new JFrame("Gomoku");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -40,7 +42,7 @@ public class GomokuGUI implements Observer {
         frame.setVisible(true);
         frame.setSize(370, 370);
         
-        //jeu.jouerPartie();
+        humainJoue = (jeu.getJoueurCourant() instanceof JoueurHumain);
     }
 
     private void addComponents() {
@@ -48,8 +50,10 @@ public class GomokuGUI implements Observer {
         panel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.addMouseListener(new MouseListener() {
             public void mouseClicked(MouseEvent e) {
-                Coup coup = panel.getCoup(jeu.getJoueurCourant().getId(), e.getX(), e.getY());
-                jeu.getPlateau().jouer(coup);
+                if (humainJoue) {
+                    Coup coup = panel.getCoup(jeu.getJoueurCourant().getId(), e.getX(), e.getY());
+                    jeu.getPlateau().jouer(coup);
+                }
             }
 
             public void mouseExited(MouseEvent e) {
@@ -74,7 +78,14 @@ public class GomokuGUI implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Passer au joueur suivant
+        jeu.joueurSuivant();
+        
+        humainJoue = (jeu.getJoueurCourant() instanceof JoueurHumain);
+        if (!humainJoue) {
+            // Trouver le coup de l'ordinateur
+            jeu.getJoueurCourant().genererCoup(jeu.getPlateau());
+        }
     }
 
 }
