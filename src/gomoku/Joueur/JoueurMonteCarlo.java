@@ -49,6 +49,7 @@ public class JoueurMonteCarlo extends Joueur {
         for (Position p : positionPossible) {
             Coup cCourant = new Coup(id, p);
             Noeud nCourant = new Noeud(cCourant);
+            nCourant.setNbSimulation(this.nbSimulation);
             etatJeu.jouer(cCourant);
             ArrayList<Coup> sit = etatJeu.getSituation();
 
@@ -61,7 +62,7 @@ public class JoueurMonteCarlo extends Joueur {
                     nCourant.ajouterDefaite(jeu.getPlateau().getHistorique().size());
                 }
             }
-            if (meilleurCoup == null || meilleurCoup.getMoyenne() < nCourant.getMoyenne()) {
+            if (meilleurCoup == null || meilleurCoup.getMoyenne() > nCourant.getMoyenne()) {
                 meilleurCoup = nCourant;
             }
             etatJeu.annuler();

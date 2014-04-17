@@ -24,8 +24,12 @@ public class Noeud {
         this.coup = coup;
     }
 
+    public void setNbSimulation(int nombre){
+        this.nbSimulation = nombre;
+    }
+    
     public double getMoyenne() {
-        return (double)this.nbVictoire / this.nbSimulation;
+        return (double)this.nbVictoire/this.nbSimulation ;
     }
 
     /**
@@ -41,10 +45,10 @@ public class Noeud {
      * @param nCoup 
      */
     public void ajouterVictoire(int nCoup) {
-        nbVictoire += (99-nCoup) * 10 ;  
+        nbVictoire += 10; //(99-nCoup) * 10 ;  
     }
 
     public void ajouterDefaite(int nCoup){
-        nbVictoire -= nCoup * 10;
+        nbVictoire -= 10;//nCoup * 10;
     }
 }
