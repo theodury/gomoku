@@ -127,7 +127,7 @@ public class MenuGUI extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         JeuDeGomokuFactory factory = new JeuDeGomokuFactory();
-        final JeuDeGomoku jeu = (JeuDeGomoku) factory.CreerPartieHumainVSAleatoire();
+        final JeuDeGomoku jeu = (JeuDeGomoku) factory.CreerPartieHumainVSMonteCarlo();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 GomokuGUI gui = new GomokuGUI(jeu);
