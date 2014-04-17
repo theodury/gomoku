@@ -83,6 +83,42 @@ public class JeuDeGomokuFactory implements JeuDePlateauFactory{
         
         return jeu;
     }
+    
+    public JeuDePlateau CreerPartieMonteCarloVSAleatoire(ArrayList<Coup> situation) {
+        JeuDeGomoku jeu = new JeuDeGomoku();
+        // Joueur 1
+        jeu.setJoueur(0, new JoueurMonteCarlo(JOUEUR1));
+        // Joueur 2
+        jeu.setJoueur(1, new JoueurAleatoire(JOUEUR2));
+        // Plateau
+        PlateauGomoku plateau = new PlateauGomoku(LONGUEUR, HAUTEUR);
+        if (situation != null) {
+            plateau.initialiser(situation);
+        }
+        jeu.setPlateau(plateau);
+        
+        return jeu;
+    }
+    
+    public JeuDePlateau CreerPartieHumainVSMonteCarlo(ArrayList<Coup> situation) {
+        JeuDeGomoku jeu = new JeuDeGomoku();
+        // Joueur 1
+        jeu.setJoueur(0, new JoueurHumain(JOUEUR1));
+        // Joueur 2
+        jeu.setJoueur(1, new JoueurMonteCarlo(JOUEUR2));
+        // Plateau
+        PlateauGomoku plateau = new PlateauGomoku(LONGUEUR, HAUTEUR);
+        if (situation != null) {
+            plateau.initialiser(situation);
+        }
+        jeu.setPlateau(plateau);
+        
+        return jeu;
+    }
+    
+    public JeuDePlateau CreerPartieHumainVSHumain() {
+        return CreerPartieHumainVSMonteCarlo(null);
+    }
 
     @Override
     public JeuDePlateau CreerPartieHumainVSHumain() {

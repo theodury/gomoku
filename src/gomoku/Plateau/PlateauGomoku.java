@@ -59,6 +59,6 @@ public class PlateauGomoku extends Plateau {
      * @return Nombre de coups à aligner pour la victoire
      */
     public int getNombreVictoire() {
-        return this.longueur / 2;
+        return Math.round(this.longueur / 2);
     }
 }
