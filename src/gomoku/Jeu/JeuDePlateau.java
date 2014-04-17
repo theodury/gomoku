@@ -99,17 +99,5 @@ public abstract class JeuDePlateau {
      */
     public abstract Joueur jouerPartie();
 
-    /**
-     * permet d'obtenir l historique
-     *
-     * @return une copie de l'historique
-     */
-    public ArrayList<Coup> getSituation() {
-        ArrayList<Coup> historique = null;
-        for (Coup c : this.plateau.getHistorique()) {
-            historique.add((Coup)c.clone());
-        }
-        return historique;
-    }
 
 }

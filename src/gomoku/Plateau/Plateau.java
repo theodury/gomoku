@@ -32,6 +32,7 @@ public class Plateau extends Observable {
 
     /**
      * Accesseur d'historique
+     *
      * @return historique
      */
     public ArrayList<Coup> getHistorique() {
@@ -193,4 +194,17 @@ public class Plateau extends Observable {
 
         return builder.toString();
     }
+
+    /**
+     * permet d'obtenir l historique
+     * @return une copie de l'historique
+     */
+    public ArrayList<Coup> getSituation() {
+        ArrayList<Coup> historique = null;
+        for (Coup c : this.getHistorique()) {
+            historique.add((Coup) c.clone());
+        }
+        return historique;
+    }
+
 }
