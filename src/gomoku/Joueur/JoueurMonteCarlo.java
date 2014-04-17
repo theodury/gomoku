@@ -8,6 +8,7 @@ package gomoku.Joueur;
 import gomoku.IA.Noeud;
 import gomoku.Jeu.JeuDePlateauFactory;
 import gomoku.Plateau.Coup;
+import gomoku.Plateau.Plateau;
 import gomoku.Plateau.Position;
 import java.util.ArrayList;
 
@@ -15,21 +16,22 @@ import java.util.ArrayList;
  *
  * @author TD
  */
-public class JoueurMonteCarlo {
+public class JoueurMonteCarlo extends Joueur {
 
     private int nbSimulation;
 
-    int id;
-
+    private JeuDePlateauFactory factory;
+    
     public JoueurMonteCarlo(int id, int nbSimulation, JeuDePlateauFactory factory) {
         this.nbSimulation = nbSimulation;
+        this.id = id;
+        this.factory = factory;
     }
 
-    public genererCoup(Plateau etatJeu);
-
-    {
-
+    public Coup genererCoup(Plateau etatJeu);
+    {      
         getCoup(etatJeu);
+        return null;
     }
 
     /**
@@ -46,13 +48,18 @@ public class JoueurMonteCarlo {
             etatJeu.jouer(cCourant);
             ArrayList<Coup> sit = etatJeu.getSituation();
 
-            if (meilleurCoup == null || meilleurCoup < nCourant) {
+            
+            
+            if (meilleurCoup == null || meilleurCoup.getMoyenne() < nCourant.getMoyenne()) {
                 meilleurCoup = nCourant;
             }
         }
-        return meilleurCoup.getCout();
+        return meilleurCoup.getCoup();
+    }
 
-        return null;
+    @Override
+    public Coup genererCoup(Plateau etatJeu) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
