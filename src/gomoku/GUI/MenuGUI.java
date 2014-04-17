@@ -64,7 +64,8 @@ public class MenuGUI extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("       Accueil jeu de gomoku");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Accueil jeu de Gomoku +");
 
         jLabel2.setText("Réalisation Mario Friz & Théo Dury");
 
