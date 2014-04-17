@@ -3,6 +3,7 @@ package gomoku.Jeu;
 
 import gomoku.Joueur.JoueurAleatoire;
 import gomoku.Joueur.JoueurHumain;
+import gomoku.Joueur.JoueurMonteCarlo;
 import gomoku.Plateau.Coup;
 import gomoku.Plateau.PlateauGomoku;
 import java.util.ArrayList;
@@ -87,7 +88,7 @@ public class JeuDeGomokuFactory implements JeuDePlateauFactory{
     public JeuDePlateau CreerPartieMonteCarloVSAleatoire(ArrayList<Coup> situation) {
         JeuDeGomoku jeu = new JeuDeGomoku();
         // Joueur 1
-        jeu.setJoueur(0, new JoueurMonteCarlo(JOUEUR1));
+        jeu.setJoueur(0, new JoueurMonteCarlo(JOUEUR1, 100, this));
         // Joueur 2
         jeu.setJoueur(1, new JoueurAleatoire(JOUEUR2));
         // Plateau
@@ -105,7 +106,7 @@ public class JeuDeGomokuFactory implements JeuDePlateauFactory{
         // Joueur 1
         jeu.setJoueur(0, new JoueurHumain(JOUEUR1));
         // Joueur 2
-        jeu.setJoueur(1, new JoueurMonteCarlo(JOUEUR2));
+        jeu.setJoueur(1, new JoueurMonteCarlo(JOUEUR2, 100, this));
         // Plateau
         PlateauGomoku plateau = new PlateauGomoku(LONGUEUR, HAUTEUR);
         if (situation != null) {
@@ -116,7 +117,7 @@ public class JeuDeGomokuFactory implements JeuDePlateauFactory{
         return jeu;
     }
     
-    public JeuDePlateau CreerPartieHumainVSHumain() {
+    public JeuDePlateau CreerPartieHumainVSMonteCarlo() {
         return CreerPartieHumainVSMonteCarlo(null);
     }
 

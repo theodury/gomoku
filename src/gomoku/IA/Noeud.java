@@ -35,7 +35,7 @@ public class Noeud {
      * @return meilleur coup
      */
     public Coup getCoup() {
-      
+      return this.coup;
     }
 
     public void ajouteurVictoire() {

@@ -23,15 +23,9 @@ public class JoueurMonteCarlo extends Joueur {
     private JeuDePlateauFactory factory;
     
     public JoueurMonteCarlo(int id, int nbSimulation, JeuDePlateauFactory factory) {
+        super(id);
         this.nbSimulation = nbSimulation;
-        this.id = id;
         this.factory = factory;
-    }
-
-    public Coup genererCoup(Plateau etatJeu);
-    {      
-        getCoup(etatJeu);
-        return null;
     }
 
     /**
@@ -59,7 +53,7 @@ public class JoueurMonteCarlo extends Joueur {
 
     @Override
     public Coup genererCoup(Plateau etatJeu) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
 }
