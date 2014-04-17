@@ -30,6 +30,12 @@ public class JeuDeGomoku extends JeuDePlateau {
         if (c.getId() == 0) {
             return false;
         }
+        // Egalité
+        if (plateau.getHistorique().size() == plateau.getHauteur() * plateau.getLongueur()) {
+            return true;
+        }
+            
+        // Victoire
         PlateauGomoku plateauGomoku = (PlateauGomoku) plateau;
         return plateauGomoku.checkColonneId(c, plateauGomoku.getNombreVictoire())
                 || plateauGomoku.checkLigneId(c, plateauGomoku.getNombreVictoire())
@@ -44,15 +50,15 @@ public class JeuDeGomoku extends JeuDePlateau {
     @Override
     public Joueur jouerPartie() {
         while (!this.partieTerminee()) {
+            // On change de joueur
+            this.joueurSuivant();
             Coup c = joueurs[joueurCourant].genererCoup(plateau);
             if (coupValide(c)) {
                 plateau.jouer(c);
             } else {
                 // On change de joueur pour pouvoir rejouer
                 this.joueurSuivant();
-            }
-            // On change de joueur
-            this.joueurSuivant();
+            }         
         }
 
         return joueurs[1-joueurCourant];

@@ -27,7 +27,6 @@ public class JoueurAleatoire extends Joueur {
                 }
             }
         }
-        
         return coupsDisponibles.get(Utilitaire.monRandom(0, coupsDisponibles.size()));
     }
 

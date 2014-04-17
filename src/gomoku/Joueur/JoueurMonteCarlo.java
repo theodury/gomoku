@@ -64,6 +64,7 @@ public class JoueurMonteCarlo extends Joueur {
             if (meilleurCoup == null || meilleurCoup.getMoyenne() < nCourant.getMoyenne()) {
                 meilleurCoup = nCourant;
             }
+            etatJeu.annuler();
         }
         return meilleurCoup.getCoup();
     }

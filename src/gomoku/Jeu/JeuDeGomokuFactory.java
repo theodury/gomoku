@@ -106,7 +106,7 @@ public class JeuDeGomokuFactory implements JeuDePlateauFactory{
         // Joueur 1
         jeu.setJoueur(0, new JoueurHumain(JOUEUR1));
         // Joueur 2
-        jeu.setJoueur(1, new JoueurMonteCarlo(JOUEUR2, 100, this));
+        jeu.setJoueur(1, new JoueurMonteCarlo(JOUEUR2, 10, this));
         // Plateau
         PlateauGomoku plateau = new PlateauGomoku(LONGUEUR, HAUTEUR);
         if (situation != null) {

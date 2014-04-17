@@ -93,14 +93,19 @@ public class GomokuGUI implements Observer {
 
             humainJoue = (jeu.getJoueurCourant() instanceof JoueurHumain);
             if (!humainJoue) {
+                // Stop listeners
+                jeu.getPlateau().deleteObserver(this);
                 // Trouver le coup de l'ordinateur
                 Coup c = jeu.getJoueurCourant().genererCoup(jeu.getPlateau());
+                // Start listeners
+                this.jeu.getPlateau().addObserver(this);
                 if (jeu.coupValide(c)) {
                     jeu.getPlateau().jouer(c);
                 } else {
                     // On change de joueur pour pouvoir rejouer
                     jeu.joueurSuivant();
                 }
+                
             }
         }
     }
