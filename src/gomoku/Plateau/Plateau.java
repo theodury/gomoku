@@ -196,15 +196,18 @@ public class Plateau extends Observable {
     }
 
     /**
-     * permet d'obtenir l historique
+     * Permet d'obtenir l historique des coups
+     *
      * @return une copie de l'historique
      */
     public ArrayList<Coup> getSituation() {
-        ArrayList<Coup> historique = null;
+        ArrayList<Coup> hist = new ArrayList<>();
         for (Coup c : this.getHistorique()) {
-            historique.add((Coup) c.clone());
+            if (c != null) {
+                hist.add((Coup) c.clone());
+            }
         }
-        return historique;
+        return hist;
     }
 
 }
