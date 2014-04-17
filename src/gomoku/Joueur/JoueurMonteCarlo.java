@@ -6,6 +6,7 @@
 package gomoku.Joueur;
 
 import gomoku.IA.Noeud;
+import gomoku.Jeu.JeuDeGomoku;
 import gomoku.Jeu.JeuDePlateauFactory;
 import gomoku.Plateau.Coup;
 import gomoku.Plateau.Plateau;
@@ -20,8 +21,15 @@ public class JoueurMonteCarlo extends Joueur {
 
     private int nbSimulation;
 
-    private JeuDePlateauFactory factory;
     
+    private JeuDePlateauFactory factory;
+
+    /**
+     * Constructeur du MontCarlo
+     * @param id identifiant 
+     * @param nbSimulation nbSimulation
+     * @param factory JeuDePlateau
+     */
     public JoueurMonteCarlo(int id, int nbSimulation, JeuDePlateauFactory factory) {
         super(id);
         this.nbSimulation = nbSimulation;
@@ -31,9 +39,11 @@ public class JoueurMonteCarlo extends Joueur {
     /**
      * Cherche le meilleur coup à jouer
      *
+     * @param etatJeu Plateau du jeu
      * @return meilleur coup
      */
-    public Coup getCoup(Plateau etatJeu) {
+    @Override
+    public Coup genererCoup(Plateau etatJeu) {
         Noeud meilleurCoup = null;
         ArrayList<Position> positionPossible = etatJeu.etatId(0);
         for (Position p : positionPossible) {
@@ -42,18 +52,20 @@ public class JoueurMonteCarlo extends Joueur {
             etatJeu.jouer(cCourant);
             ArrayList<Coup> sit = etatJeu.getSituation();
 
-            
-            
+            for (int i = 0; i < nbSimulation; i++) {
+                JeuDeGomoku jeu = (JeuDeGomoku) factory.CreerPartieAleatoireVSAleatoire(sit);
+                Joueur JoueurGagnant = jeu.jouerPartie();
+                if (JoueurGagnant.getId() == this.id) {
+                    nCourant.ajouterVictoire(jeu.getPlateau().getHistorique().size());
+                } else if (JoueurGagnant.getId() != 0) {
+                    nCourant.ajouterDefaite(jeu.getPlateau().getHistorique().size());
+                }
+            }
             if (meilleurCoup == null || meilleurCoup.getMoyenne() < nCourant.getMoyenne()) {
                 meilleurCoup = nCourant;
             }
         }
         return meilleurCoup.getCoup();
-    }
-
-    @Override
-    public Coup genererCoup(Plateau etatJeu) {
-        return null;
     }
 
 }

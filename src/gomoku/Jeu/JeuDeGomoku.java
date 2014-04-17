@@ -54,6 +54,6 @@ public class JeuDeGomoku extends JeuDePlateau {
             this.joueurSuivant();
         }
 
-        return joueurs[joueurCourant];
+        return joueurs[1-joueurCourant];
     }
 }

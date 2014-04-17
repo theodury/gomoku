@@ -25,24 +25,26 @@ public class Noeud {
     }
 
     public double getMoyenne() {
-
-        return 10;
+        return (double)this.nbVictoire / this.nbSimulation;
     }
 
     /**
-     * Cherche le meilleur coup à jouer
-     *
-     * @return meilleur coup
-     */
+    * Cherche le meilleur coup à jouer
+    * @return meilleur coup
+    */
     public Coup getCoup() {
       return this.coup;
     }
 
-    public void ajouteurVictoire() {
-
+    /**
+     * Compte une victoire en fonction des coups
+     * @param nCoup 
+     */
+    public void ajouterVictoire(int nCoup) {
+        nbVictoire += (99-nCoup) * 10 ;  
     }
 
-    public void ajouteurDefaite() {
-
+    public void ajouterDefaite(int nCoup){
+        nbVictoire -= nCoup * 10;
     }
 }
