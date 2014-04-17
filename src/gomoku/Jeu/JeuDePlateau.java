@@ -4,6 +4,7 @@ import gomoku.Joueur.Joueur;
 import gomoku.Plateau.Coup;
 import gomoku.Plateau.Plateau;
 import gomoku.Plateau.PlateauGomoku;
+import java.util.ArrayList;
 import java.util.Observable;
 
 /**
@@ -30,12 +31,14 @@ public abstract class JeuDePlateau {
 
     /**
      * Verifie si la partie est finie
+     *
      * @return Vrai si partie finie, faux sinon
      */
     public abstract boolean partieTerminee();
 
     /**
      * Verifie si le coup est valide
+     *
      * @param coup Coup à jouer
      * @return Vrai si valide, faux sinon
      */
@@ -43,6 +46,7 @@ public abstract class JeuDePlateau {
 
     /**
      * Permet de modifier les valeurs d'un des joueurs
+     *
      * @param ordre position du joueur
      * @param joueur Joueur
      */
@@ -52,6 +56,7 @@ public abstract class JeuDePlateau {
 
     /**
      * Permet de modifier la valeurs du plateau
+     *
      * @param plateau Plateau
      */
     public void setPlateau(PlateauGomoku plateau) {
@@ -64,6 +69,7 @@ public abstract class JeuDePlateau {
 
     /**
      * Retourne le plateau de jeu
+     *
      * @return Plateau de jeu
      */
     public Plateau getPlateau() {
@@ -76,9 +82,10 @@ public abstract class JeuDePlateau {
     public void joueurSuivant() {
         joueurCourant = 1 - joueurCourant;
     }
-    
+
     /**
      * Retourne le Joueur courant
+     *
      * @return Joueur courant
      */
     public Joueur getJoueurCourant() {
@@ -87,8 +94,22 @@ public abstract class JeuDePlateau {
 
     /**
      * Permet de jouer la partie
+     *
      * @return le joueur gagnant
      */
     public abstract Joueur jouerPartie();
+
+    /**
+     * permet d'obtenir l historique
+     *
+     * @return une copie de l'historique
+     */
+    public ArrayList<Coup> getSituation() {
+        ArrayList<Coup> historique = null;
+        for (Coup c : this.plateau.getHistorique()) {
+            historique.add((Coup)c.clone());
+        }
+        return historique;
+    }
 
 }

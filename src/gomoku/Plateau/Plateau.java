@@ -1,4 +1,3 @@
-
 package gomoku.Plateau;
 
 import java.util.ArrayList;
@@ -6,6 +5,7 @@ import java.util.Observable;
 
 /**
  * Plateau de jeu
+ *
  * @author Theo Dury
  */
 public class Plateau extends Observable {
@@ -14,21 +14,29 @@ public class Plateau extends Observable {
      * Longueur du plateau de jeu
      */
     int longueur;
-    
+
     /**
      * Hauteur du plateau de jeu
      */
     int hauteur;
-    
+
     /**
      * Valeurs internes du plateau de jeu
      */
     int[][] etatPlateau;
-    
+
     /**
      * Historique des coups joués sur le plateau
      */
     ArrayList<Coup> historique;
+
+    /**
+     * Accesseur d'historique
+     * @return historique
+     */
+    public ArrayList<Coup> getHistorique() {
+        return historique;
+    }
 
     public Plateau(int longueur, int hauteur) {
         this.longueur = longueur;
@@ -40,6 +48,7 @@ public class Plateau extends Observable {
 
     /**
      * Retourne la longueur du plateau
+     *
      * @return Longueur du plateau
      */
     public int getLongueur() {
@@ -48,6 +57,7 @@ public class Plateau extends Observable {
 
     /**
      * Retourne la hauteur du plateau
+     *
      * @return Hauteur du plateau
      */
     public int getHauteur() {
@@ -56,18 +66,20 @@ public class Plateau extends Observable {
 
     /**
      * Retourne le dernier coup joué
+     *
      * @return Dernier coup joué ou Coup(0) si aucun coup joué
      */
     public Coup getDernierCoup() {
         if (historique.size() > 0) {
-            return historique.get(historique.size()-1);
+            return historique.get(historique.size() - 1);
         }
-        
+
         return new Coup(0, new Position(0, 0));
     }
-    
+
     /**
      * Retourne l'id du joueur pour une certaine position
+     *
      * @param x Position en x
      * @param y Position en y
      * @return L'id du joueur
@@ -75,10 +87,11 @@ public class Plateau extends Observable {
     public int getId(int x, int y) {
         return this.etatPlateau[x][y];
     }
-    
+
     /**
      * Teste si une case du plateau est vide
-     * @param x Position en x 
+     *
+     * @param x Position en x
      * @param y Position en y
      * @return Vrai si la case est vide, sinon faux
      */
@@ -96,16 +109,17 @@ public class Plateau extends Observable {
             }
         }
     }
-    
+
     /**
      * Permet d'initialiser le plateau avec des coups déjà existants
-     * @param coups Coups précédents 
+     *
+     * @param coups Coups précédents
      */
     public void initialiser(ArrayList<Coup> coups) {
         if (coups == null) {
             return;
         }
-        
+
         for (int i = 0; i < coups.size(); i++) {
             this.jouer(coups.get(i));
         }
@@ -113,6 +127,7 @@ public class Plateau extends Observable {
 
     /**
      * Annule le coup précédent
+     *
      * @return Le coup annulé
      */
     public Coup annuler() {
@@ -124,6 +139,7 @@ public class Plateau extends Observable {
 
     /**
      * Joue un coup
+     *
      * @param coup Le coup à jouer
      * @return Vrai si coup bien joué, faux sinon
      */
@@ -135,12 +151,13 @@ public class Plateau extends Observable {
             notifyObservers();
             return true;
         }
-        
+
         return false;
     }
 
     /**
      * Retourne les positions joués par un joueur
+     *
      * @param id L'id du joueur
      * @return Liste des position du joueur
      */
