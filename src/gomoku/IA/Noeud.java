@@ -1,4 +1,3 @@
-
 package gomoku.IA;
 
 import gomoku.Plateau.Coup;
@@ -7,43 +6,43 @@ import java.util.ArrayList;
 
 /**
  * Noeud utilisé pour Monte Carlo
+ *
  * @author Mario
  */
 public class Noeud {
 
-    
-        private int nbVictoire;
-        private int nbSimulation;
-        private Coup coup;
-        /**
-         * Constructeur de noeud
-         * @param coup 
-         */             
-        public Noeud(Coup coup)
-        {
-        this.coup=coup;
-        }
+    private int nbVictoire;
+    private int nbSimulation;
+    private Coup coup;
 
-        public double getMoyenne()
-        {
-        
-            return 10;
-        }
-        
-        public Coup getCoup(){
-            Noeud meilleurCoup = null;
-            //ArrayList<Position> positionPossible =  etatJeu.getEtat
-            //return Coup;
-            
-            return null;
-        }
+    /**
+     * Constructeur de noeud
+     *
+     * @param coup
+     */
+    public Noeud(Coup coup) {
+        this.coup = coup;
+    }
 
-        
-        public void ajouteurVictoire(){
-            
-        }
-        
-        public void ajouteurDefaite(){
-            
-        }
+    public double getMoyenne() {
+
+        return 10;
+    }
+
+    /**
+     * Cherche le meilleur coup à jouer
+     *
+     * @return meilleur coup
+     */
+    public Coup getCoup() {
+      
+    }
+
+    public void ajouteurVictoire() {
+
+    }
+
+    public void ajouteurDefaite() {
+
+    }
 }
